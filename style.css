@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+    font-size: 16px;
+    margin: 2px;
+}
+
+button:hover {
+    border: 2px solid rgba(0,0,0,.8);
+}
+
+button.rock {
+    color: red;
+}
+
+button.paper {
+    color: blue;
+}
+
+button.scissors {
+    color: green;
+}
