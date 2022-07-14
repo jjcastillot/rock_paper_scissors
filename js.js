@@ -3,39 +3,57 @@
 // FUNCTIONS CREATED
 
 // Game function. Plays rounds until one of players win 5 rounds
-function game () {
-    let playerScore = 0;
-    let compScore = 0;
-    while ((playerScore <5) && (compScore < 5)) {
-        [round,player,comp] = playRound(playerSelection(),computerPlay());
-        switch (round) {
-            case 'W':
-                playerScore += 1;
-                console.log(`You chose ${player}. Comp choose ${comp}. YOU WIN!`);
-                console.log(`Player: ${playerScore}. Computer: ${compScore}.`);
-                break;
-            case 'L':
-                compScore += 1;
-                console.log(`You chose ${player}. Comp choose ${comp}. YOU LOSE :(`);
-                console.log(`Player: ${playerScore}. Computer: ${compScore}.`);
-                break;
-            case 'T':
-                console.log(`You chose ${player}. Comp choose ${comp}. IT\'S A TIE.`);
-                console.log(`Player: ${playerScore}. Computer: ${compScore}.`);
-                break;
-            case 'E':
-                console.log('Error. Wrong user input. Please try again');
-                break;
-        }
-        if (playerScore === 5) {
-            return 'Player wins!';
-        } else if (compScore === 5) {
-            return 'Computer wins :(';
-        } else {
-            console.log('Keep playing');
-        }
-    }
-}
+// function game () {
+//     let playerScore = 0;
+//     let compScore = 0;
+//     while ((playerScore <5) && (compScore < 5)) {
+//         [round,player,comp] = playRound(playerSelection(),computerPlay());
+//         switch (round) {
+//             case 'W':
+//                 playerScore += 1;
+//                 console.log(`You chose ${player}. Comp choose ${comp}. YOU WIN!`);
+//                 console.log(`Player: ${playerScore}. Computer: ${compScore}.`);
+//                 break;
+//             case 'L':
+//                 compScore += 1;
+//                 console.log(`You chose ${player}. Comp choose ${comp}. YOU LOSE :(`);
+//                 console.log(`Player: ${playerScore}. Computer: ${compScore}.`);
+//                 break;
+//             case 'T':
+//                 console.log(`You chose ${player}. Comp choose ${comp}. IT\'S A TIE.`);
+//                 console.log(`Player: ${playerScore}. Computer: ${compScore}.`);
+//                 break;
+//             case 'E':
+//                 console.log('Error. Wrong user input. Please try again');
+//                 break;
+//         }
+//         if (playerScore === 5) {
+//             return 'Player wins!';
+//         } else if (compScore === 5) {
+//             return 'Computer wins :(';
+//         } else {
+//             console.log('Keep playing');
+//         }
+//     }
+// }
+const rockBtn = document.querySelector('.rock');
+rockBtn.addEventListener('click', function(e) {
+    [round,player,comp] = playRound('Rock',computerPlay());
+    console.log(round,player,comp);
+});
+
+const paperBtn = document.querySelector('.paper');
+paperBtn.addEventListener('click', function(e) {
+    [round,player,comp] = playRound('Paper',computerPlay());
+    console.log(round,player,comp);
+});
+
+const scissorsBtn = document.querySelector('.scissors');
+scissorsBtn.addEventListener('click', function(e) {
+    [round,player,comp] = playRound('Scissors',computerPlay());
+    console.log(round,player,comp);
+});
+
 
 // One round. Takes your play and computer's, then decides a Win, Lose or Tie
 function playRound(player,computer) {
