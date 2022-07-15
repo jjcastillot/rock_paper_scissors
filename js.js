@@ -36,22 +36,35 @@
 //         }
 //     }
 // }
+
+let playerScore = 0;
+let compScore = 0;
+const result = document.querySelector('.history');
+const playerDisplay = document.querySelector('.human_score');
+const compDisplay = document.querySelector('.comp_score');
+playerDisplay.textContent = `${playerScore}`;
+compDisplay.textContent = `${compScore}`;
+
+
 const rockBtn = document.querySelector('.rock');
 rockBtn.addEventListener('click', function(e) {
     [round,player,comp] = playRound('Rock',computerPlay());
     console.log(round,player,comp);
+    result.textContent = `You chose ${player}. Comp choose ${comp}`;
 });
 
 const paperBtn = document.querySelector('.paper');
 paperBtn.addEventListener('click', function(e) {
     [round,player,comp] = playRound('Paper',computerPlay());
     console.log(round,player,comp);
+    result.textContent = `You chose ${player}. Comp choose ${comp}`
 });
 
 const scissorsBtn = document.querySelector('.scissors');
 scissorsBtn.addEventListener('click', function(e) {
     [round,player,comp] = playRound('Scissors',computerPlay());
     console.log(round,player,comp);
+    result.textContent = `You chose ${player}. Comp choose ${comp}`
 });
 
 
