@@ -49,24 +49,82 @@ compDisplay.textContent = `${compScore}`;
 const rockBtn = document.querySelector('.rock');
 rockBtn.addEventListener('click', function(e) {
     [round,player,comp] = playRound('Rock',computerPlay());
-    console.log(round,player,comp);
-    result.textContent = `You chose ${player}. Comp choose ${comp}`;
+    [pS,cS] = updateScore(round,result,playerDisplay,compDisplay,playerScore,compScore);
+    playerScore = pS;
+    compScore = cS;
+    if (playerScore === 5 || compScore === 5){
+        result.textContent += '--- END OF THE GAME ---\n';
+        if (playerScore === 5) {
+            result.textContent += 'YOU WON THE MATCH!\n';
+        } else {
+            result.textContent += 'YOU LOST THE MATCH!\n';  
+        }
+        playerScore = 0;
+        compScore = 0;
+        playerDisplay.textContent = `${playerScore}`;
+        compDisplay.textContent = `${compScore}`;
+    }
 });
 
 const paperBtn = document.querySelector('.paper');
 paperBtn.addEventListener('click', function(e) {
     [round,player,comp] = playRound('Paper',computerPlay());
-    console.log(round,player,comp);
-    result.textContent = `You chose ${player}. Comp choose ${comp}`
+    [pS,cS] = updateScore(round,result,playerDisplay,compDisplay,playerScore,compScore);
+    playerScore = pS;
+    compScore = cS;
+    if (playerScore === 5 || compScore === 5){
+        result.textContent += '--- END OF THE GAME ---\n';
+        if (playerScore === 5) {
+            result.textContent += 'YOU WON THE MATCH!\n';
+        } else {
+            result.textContent += 'YOU LOST THE MATCH!\n';  
+        }
+        playerScore = 0;
+        compScore = 0;
+        playerDisplay.textContent = `${playerScore}`;
+        compDisplay.textContent = `${compScore}`;
+    }
 });
 
 const scissorsBtn = document.querySelector('.scissors');
 scissorsBtn.addEventListener('click', function(e) {
     [round,player,comp] = playRound('Scissors',computerPlay());
-    console.log(round,player,comp);
-    result.textContent = `You chose ${player}. Comp choose ${comp}`
+    [pS,cS] = updateScore(round,result,playerDisplay,compDisplay,playerScore,compScore);
+    playerScore = pS;
+    compScore = cS;
+    if (playerScore === 5 || compScore === 5){
+        result.textContent += '--- END OF THE GAME ---\n';
+        if (playerScore === 5) {
+            result.textContent += 'YOU WON THE MATCH!\n';
+        } else {
+            result.textContent += 'YOU LOST THE MATCH!\n';  
+        }
+        playerScore = 0;
+        compScore = 0;
+        playerDisplay.textContent = `${playerScore}`;
+        compDisplay.textContent = `${compScore}`;
+    }
 });
 
+function updateScore(round,result,playerDisplay,compDisplay,playerScore,compScore) {
+    result.textContent += `You chose ${player}. Comp choose ${comp}. `;
+    switch (round) {
+        case 'W':
+            playerScore += 1;
+            playerDisplay.textContent = `${playerScore}`;
+            result.textContent += `YOU WIN!\n`;
+            break;
+        case 'L':
+            compScore += 1;
+            compDisplay.textContent = `${compScore}`;
+            result.textContent += `YOU LOSE :(\n`;
+            break;
+        case 'T':
+            result.textContent += `IT\'S A TIE.\n`;
+            break;
+    }
+    return [playerScore,compScore];
+}
 
 // One round. Takes your play and computer's, then decides a Win, Lose or Tie
 function playRound(player,computer) {
