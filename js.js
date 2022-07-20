@@ -42,9 +42,22 @@ let compScore = 0;
 const result = document.querySelector('.history');
 const playerDisplay = document.querySelector('.human_score');
 const compDisplay = document.querySelector('.comp_score');
+const buttonContainer = document.querySelector('.buttons');
 playerDisplay.textContent = `${playerScore}`;
 compDisplay.textContent = `${compScore}`;
 
+const restartBtn = document.querySelector('.restart');
+restartBtn.addEventListener('click', function(e) {
+    playerScore =0;
+    compScore = 0;
+    playerDisplay.textContent = `${playerScore}`;
+    compDisplay.textContent = `${compScore}`;
+    result.textContent = '';
+    rockBtn.disabled = false;
+    paperBtn.disabled = false;
+    scissorsBtn.disabled = false;
+    restartBtn.disabled = true;
+});
 
 const rockBtn = document.querySelector('.rock');
 rockBtn.addEventListener('click', function(e) {
@@ -59,10 +72,10 @@ rockBtn.addEventListener('click', function(e) {
         } else {
             result.textContent += 'YOU LOST THE MATCH!\n';  
         }
-        playerScore = 0;
-        compScore = 0;
-        playerDisplay.textContent = `${playerScore}`;
-        compDisplay.textContent = `${compScore}`;
+        rockBtn.disabled = true;
+        paperBtn.disabled = true;
+        scissorsBtn.disabled = true;
+        restartBtn.disabled = false;
     }
 });
 
@@ -79,10 +92,10 @@ paperBtn.addEventListener('click', function(e) {
         } else {
             result.textContent += 'YOU LOST THE MATCH!\n';  
         }
-        playerScore = 0;
-        compScore = 0;
-        playerDisplay.textContent = `${playerScore}`;
-        compDisplay.textContent = `${compScore}`;
+        rockBtn.disabled = true;
+        paperBtn.disabled = true;
+        scissorsBtn.disabled = true;
+        restartBtn.disabled = false;
     }
 });
 
@@ -99,28 +112,28 @@ scissorsBtn.addEventListener('click', function(e) {
         } else {
             result.textContent += 'YOU LOST THE MATCH!\n';  
         }
-        playerScore = 0;
-        compScore = 0;
-        playerDisplay.textContent = `${playerScore}`;
-        compDisplay.textContent = `${compScore}`;
+        rockBtn.disabled = true;
+        paperBtn.disabled = true;
+        scissorsBtn.disabled = true;
+        restartBtn.disabled = false;
     }
 });
 
 function updateScore(round,result,playerDisplay,compDisplay,playerScore,compScore) {
-    result.textContent += `You chose ${player}. Comp choose ${comp}. `;
+    
     switch (round) {
         case 'W':
             playerScore += 1;
             playerDisplay.textContent = `${playerScore}`;
-            result.textContent += `YOU WIN!\n`;
+            result.textContent = `You chose ${player}. Comp choose ${comp}. YOU WIN!\n`;
             break;
         case 'L':
             compScore += 1;
             compDisplay.textContent = `${compScore}`;
-            result.textContent += `YOU LOSE :(\n`;
+            result.textContent = `You chose ${player}. Comp choose ${comp}. YOU LOSE :(\n`;
             break;
         case 'T':
-            result.textContent += `IT\'S A TIE.\n`;
+            result.textContent = `You chose ${player}. Comp choose ${comp}.IT\'S A TIE.\n`;
             break;
     }
     return [playerScore,compScore];

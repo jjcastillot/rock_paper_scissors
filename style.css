@@ -31,15 +31,16 @@ body {
     font-size: 100px;
     background-color: azure;
     width: 100px;
-    height: 150px;
+    height: 200px;
     text-align: center;
     vertical-align: middle;
+    
 }
 
 .history {
     background-color: azure;
     width: 400px;
-    height: 400px;
+    height: 100px;
     margin: auto;
     white-space: pre-wrap;
 }
@@ -51,6 +52,12 @@ button {
 
 button:hover {
     border: 2px solid rgba(0,0,0,.8);
+}
+
+button:disabled {
+    border: 1px solid #999999 !important;
+    background-color: #cccccc !important;
+    color: #666666 !important;
 }
 
 button.rock {
